@@ -1,0 +1,40 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      QGIS_DISABLE_MESSAGE_HOOKS: 1
+      QT_QPA_PLATFORM: offscreen
+
+    strategy:
+      matrix:
+        python-version: ["3.10"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+            enable-cache: true
+
+      - name: Set up Python ${{ matrix.python-version }}
+        run: uv python install ${{ matrix.python-version }}
+
+      - name: Install QGIS
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y qgis qgis-plugin-grass
+
+      - name: Install Dependencies
+        run: uv sync --all-groups
+
+      - name: Run Tests
+        run: uv run pytest

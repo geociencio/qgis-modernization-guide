@@ -1,0 +1,49 @@
+[project]
+name = "my-plugin"
+version = "0.1.0"
+description = "A modern QGIS plugin template"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Your Name", email = "your.email@example.com"}]
+dependencies = [
+    "requests",  # Example runtime dependency
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "pytest-qgis",
+    "ruff",
+    "mypy",
+    "pre-commit",
+    "qgis-plugin-ci",
+    "qgis-plugin-manager",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "UP",  # pyupgrade
+    "N",   # pep8-naming
+]
+ignore = []
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-v --tb=short"
+testpaths = ["tests"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true

@@ -1,0 +1,13 @@
+[general]
+name=My Plugin
+qgisMinimumVersion=3.0
+description=A modern QGIS plugin template
+version=0.1.0
+author=Your Name
+email=your.email@example.com
+about=A template demonstrating modern development practices.
+tracker=https://github.com/your/repo/issues
+repository=https://github.com/your/repo
+tags=template,modern
+experimental=True
+deprecated=False
