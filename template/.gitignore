@@ -52,3 +52,17 @@ htmlcov/
 
 # QGIS Plugin specifics
 .qgis-plugin-ci
+
+# Documentation/build output
+docs/build/
+help/html/
+
+# qgis-manage deploy manifest
+.qgis-manage/
+
+# Editor/backup files
+*~
+*.bak
+*.orig
+*.swp
+.DS_Store
